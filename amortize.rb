@@ -33,18 +33,22 @@ class Amortize
   def amortization_table(options = {})
     current_principal = options[:current_principal] || loan_value
     additional_principal = options[:additional_principal] || 0.0
-    
+
+    total_paid = 0.0    
     month = 0
     while current_principal > 0
       total_payment = payment + additional_principal
       interest_amount = current_principal * monthly_rate
       principal_amount = total_payment - interest_amount
       next_principal = current_principal - principal_amount
+      total_paid += total_payment
 
-      puts "#{display month}:  pay #{show total_payment}  interest #{show interest_amount}  principal #{show principal_amount}  remaining: #{show next_principal}"
+      puts "#{display month}:  pay #{show total_payment}  interest #{show interest_amount}  principal #{show principal_amount}  remaining: #{show next_principal}  total: #{show total_paid}"
       current_principal = next_principal
       month += 1
     end
+
+    puts "Total paid:  #{show total_paid}"
   end
 end
 
