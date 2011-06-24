@@ -36,9 +36,11 @@ class Amortize
 
     total_paid = 0.0    
     month = 0
-    while current_principal > 0
-      total_payment = payment + additional_principal
+
+    while current_principal > 0.0
       interest_amount = current_principal * monthly_rate
+      total_payment = payment + additional_principal
+      total_payment = current_principal + interest_amount if total_payment > current_principal
       principal_amount = total_payment - interest_amount
       next_principal = current_principal - principal_amount
       total_paid += total_payment
