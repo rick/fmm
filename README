@@ -1,0 +1,2 @@
+currently just a simple amortization schedule calculator in ruby.  
+used to figure out what the out-of-pocket total is for various loans, refinances, and "added principal" payments.
